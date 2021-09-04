@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="script.js"></script> -->
+    <!-- <script data-main = "scripts/main" src = "scripts/require.js"></script> -->
+    <style>
+      table {
+        border-style: ridge;
+        border-width: 150px;
+        border-color: #8ebf42;
+        background-color: #d9d9d9;
+      }
+      th {
+        border: 5px solid #095484;
+      }
+      td {
+        border: 20px groove #1c87c9;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      var data = fetch("/u.json")
+        .then((response) => response.json())
+        .then((data) => {
+          var table = document.createElement("table"),
+            row,
+            cellA,
+            cellB;
+
+          var table1 = document.createElement("table"),
+            row1,
+            cellA1,
+            cellB1;
+          var table2 = document.createElement("table"),
+            row2,
+            cellA2,
+            cellB2;
+          var table3 = document.createElement("table"),
+            row3,
+            cellA3,
+            cellB3;
+          document.getElementById("demoA").appendChild(table);
+          document.getElementById("demoB").appendChild(table1);
+          document.getElementById("demoC").appendChild(table2);
+          document.getElementById("demoD").appendChild(table3);
+          for (let key in data) {
+            // (C2) ROWS & CELLS
+            document.getElementById("demoB").style.border =
+              "thick solid #0000FF";
+            row = document.createElement("tr");
+            cellA = document.createElement("td");
+            cellB = document.createElement("td");
+
+            // (C3) KEY & VALUE
+            // console.log(typeof data[key]);
+            if (typeof data[key] == "number") {
+              cellA.innerHTML = key;
+              cellB.innerHTML = data[key];
+            } else {
+              for (var pr in data[key]) {
+                row1 = document.createElement("tr");
+                cellA1 = document.createElement("td");
+                cellB1 = document.createElement("td");
+                console.log(typeof data[key][pr]);
+                if (typeof data[key][pr] == "number") {
+                  cellA1.innerHTML = pr;
+                  cellB1.innerHTML = data[key][pr];
+                } else {
+                  for (var jh in data[key][pr]) {
+                    row2 = document.createElement("tr");
+                    cellA2 = document.createElement("td");
+                    cellB2 = document.createElement("td");
+                    console.log(typeof data[key][pr]);
+                    if (typeof data[key][pr][jh] == "number") {
+                      cellA2.innerHTML = jh;
+                      cellB2.innerHTML = data[key][pr][jh];
+                    } else {
+                      for (var mo in data[key][pr][jh]) {
+                        row3 = document.createElement("tr");
+                        cellA3 = document.createElement("td");
+                        cellB3 = document.createElement("td");
+                        cellA3.innerHTML = mo;
+                        cellB3.innerHTML = data[key][pr][jh][mo];
+                        table3.appendChild(row3);
+                        row3.appendChild(cellA3);
+                        row3.appendChild(cellB3);
+                      }
+                    }
+                    table2.appendChild(row2);
+                    row2.appendChild(cellA2);
+                    row2.appendChild(cellB2);
+                  }
+                  document.getElementById("demoA").style.border =
+                    "thick solid #0000FF";
+                }
+                table1.appendChild(row1);
+                row1.appendChild(cellA1);
+                row1.appendChild(cellB1);
+              }
+            }
+            document.getElementById("demoC").style.border =
+              "thick solid #0000FF";
+
+            // (C4) ATTACH ROW & CELLS
+            table.appendChild(row);
+            row.appendChild(cellA);
+            row.appendChild(cellB);
+          }
+          document.getElementById("demoD").style.border = "thick solid #0000FF";
+        });
+    </script>
+    <div id="demoA" style="font-size: 15px; font-weight: bold"></div>
+    <div id="demoB" style="font-size: 15px; font-weight: bold"></div>
+    <div id="demoC" style="font-size: 15px; font-weight: bold"></div>
+    <div id="demoD" style="font-size: 15px; font-weight: bold"></div>
+    <table align="center" id="demoA" border="1"></table>
+  </body>
+</html>

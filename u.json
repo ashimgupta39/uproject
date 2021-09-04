@@ -1,0 +1,48 @@
+
+{
+    "Bucket Delta": -19.888334687389474,
+    "FAO56_day": 12.478334687389474,
+    "OWM daily data": {
+      "clouds": 6,
+      "dew_point": 22.2,
+      "dt": 1630132200,
+      "feels_like": {
+        "day": 38.2,
+        "eve": 36.96,
+        "morn": 25.36,
+        "night": 31.3
+      },
+      "humidity": 50,
+      "moon_phase": 0.69,
+      "moonrise": 1630169580,
+      "moonset": 1630129440,
+      "pop": 0.72,
+      "pressure": 1002,
+      "rain": 0.92,
+      "sunrise": 1630110541,
+      "sunset": 1630156973,
+      "temp": {
+        "day": 33.91,
+        "eve": 32.48,
+        "max": 35.31,
+        "min": 24.43,
+        "morn": 24.43,
+        "night": 28.04
+      },
+      "uvi": 10.4,
+      "weather": [
+        {
+          "description": "light rain",
+          "icon": "10d",
+          "id": 500,
+          "main": "Rain"
+        }
+      ],
+      "wind_deg": 117,
+      "wind_gust": 11.27,
+      "wind_speed": 4.495185961759344
+    },
+    "RAIN TODAY": 0.92,
+    "Runtime": 796,
+    "SNOW TODAY": 0.0
+  }
